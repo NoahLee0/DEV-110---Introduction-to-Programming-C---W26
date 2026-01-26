@@ -1,6 +1,6 @@
 # Week 2: Calculator Lite - Study Notes
 
-**Name:**
+**Name:** Noah Lee 
 
 ## Understanding Data Types
 
@@ -96,7 +96,7 @@ Answer: I wasn't sure how to change the decimal numbers dynamically, so I had to
 2. I figured out how to limit decimals to a certain number of decimals
 3. I got the hang of string interpolation
 4. Console.ReadLine() makes sense to me now
-5. \n for new lines is now in my vocabulary
+5. Know how to write new lines is now in my vocabulary
 
 **Which data type concept was most useful?**
 [Explain which data type (string, bool, int, or double) you found most interesting and why]

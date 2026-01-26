@@ -1,5 +1,4 @@
 namespace CalculatorLite;
-
 using System;
 using System.Diagnostics;
 using System.Xml;
@@ -36,7 +35,7 @@ public class Program
         Console.WriteLine("Enter your name:");
         name = Console.ReadLine();
 
-        Console.WriteLine($"Good morning, good afternoon, or good evening {name}!" +
+        Console.WriteLine($"Hello {name}!" +
         "\nUse decimal precision? (yes/no)");
 
         // TODO: Ask if they want to use decimals (bool)
@@ -62,7 +61,6 @@ public class Program
                 Console.WriteLine("Please answer (yes) or (no).");
                 decPrecision = Console.ReadLine();
             }
-
         }
 
         // TODO: Prompt user for first number (double or int based on choice)
@@ -137,11 +135,9 @@ public class Program
         // - remainder (modulus: %)
         // - average ((num1 + num2) / 2)
 
-
         // TODO: Display results with proper formatting
         // Show 2 decimal places: {value:F2}
         // Include descriptive labels for each operation
-
 
         // TODO: Check if second number is zero BEFORE dividing
         // Use if statement: if (num2 == 0) { show error } else { calculate }
@@ -167,17 +163,15 @@ public class Program
             $"Modulus: {(num1 % num2).ToString("F2")}");
             calculations += 2;
             }
-            Console.WriteLine($"Average: {((num1 + num2)/2).ToString("F2")}");
+            Console.WriteLine($"Average: {((num1 + num2) / 2).ToString("F2")}");
             if (num1 == 0)
             {
                 Console.WriteLine("Error: Cannot divide by zero.");
             } else
             {
                 Console.WriteLine($"Percentage Difference: {((((num1 - num2) / num1) * 100).ToString("F2"))}% \n");
-                calculations ++;
+                calculations++;
             }
-
-
         } else
         {
         Console.WriteLine($"\nAddition: {(num1 + num2).ToString("F0")} \n" +
@@ -193,16 +187,15 @@ public class Program
             $"Modulus: {(num1 % num2).ToString("F0")}");
             calculations += 2;
             }
-            Console.WriteLine($"Average: {((num1 + num2)/2).ToString("F0")}");
+            Console.WriteLine($"Average: {((num1 + num2) / 2).ToString("F0")}");
             if (num1 == 0)
             {
                 Console.WriteLine("Error: Cannot divide by zero.");
             } else
             {
                 Console.WriteLine($"Percentage Difference: {((((num1 - num2) / num1) * 100).ToString("F0"))}% \n");
-                calculations ++;
+                calculations++;
             }
-
         }
         Console.WriteLine($"Performed {calculations} calculations for {name}.");
         Console.WriteLine("\nThank you for using Calculator Lite!");
