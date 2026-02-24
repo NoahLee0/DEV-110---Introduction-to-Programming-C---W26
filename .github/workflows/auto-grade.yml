@@ -44,9 +44,17 @@ jobs:
             02) ASSIGNMENT="week-02-calculator-lite" ;;
             03) ASSIGNMENT="week-03-profile-card" ;;
             05) ASSIGNMENT="week-05-guess-the-number" ;;
+<<<<<<< HEAD
             *)
               echo "::error::Week $WEEK not yet configured in workflow"
               echo "::error::Available weeks: 01, 02, 03, 05"
+=======
+            06) ASSIGNMENT="week-06-text-menu-app" ;;
+            07) ASSIGNMENT="week-07-class-roster" ;;
+            *)
+              echo "::error::Week $WEEK not yet configured in workflow"
+              echo "::error::Available weeks: 01, 02, 03, 05, 06, 07"
+>>>>>>> 6152f1b5048162c84e28aa0e9aefae0dbe81bdcc
               exit 1
               ;;
           esac

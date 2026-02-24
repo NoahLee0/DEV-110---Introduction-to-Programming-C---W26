@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 using System.Collections.Concurrent;
 using System.ComponentModel;
 using System.ComponentModel.Design.Serialization;
@@ -23,6 +24,8 @@ using System.Text.RegularExpressions;
 using System.Threading.Channels;
 using Microsoft.Win32.SafeHandles;
 
+=======
+>>>>>>> 6152f1b5048162c84e28aa0e9aefae0dbe81bdcc
 namespace GuessTheNumber;
 
 public class Program
@@ -74,6 +77,7 @@ public class Program
 
         // TODO 11: Print a closing message after all rounds finish
         // Example: "Thanks for playing!"
+<<<<<<< HEAD
 
         int maxValue = ReadIntInRange("Enter a max value (10-100): ", 10, 100);
         int rounds = ReadIntInRange("How many rounds? (1-3): ", 1, 3);
@@ -103,6 +107,8 @@ public class Program
         }
 
         Console.WriteLine("Thank you for playing!");
+=======
+>>>>>>> 6152f1b5048162c84e28aa0e9aefae0dbe81bdcc
     }
 
     // private static int ReadIntInRange(string prompt, int min, int max)
@@ -113,6 +119,7 @@ public class Program
     // - Repeat until the value is in range
     // -- Hint: !isValid || value < min || value > max
     // }
+<<<<<<< HEAD
     private static int ReadIntInRange(string prompt, int min, int max)
     {
         bool isValid;
@@ -149,4 +156,6 @@ public class Program
 
         return value;
     }
+=======
+>>>>>>> 6152f1b5048162c84e28aa0e9aefae0dbe81bdcc
 }

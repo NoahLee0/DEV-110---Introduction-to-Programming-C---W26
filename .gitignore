@@ -82,6 +82,10 @@ Desktop.ini
 
 # GitHub files
 .github
+<<<<<<< HEAD
+=======
+.github/copilot-instructions.md
+>>>>>>> 6152f1b5048162c84e28aa0e9aefae0dbe81bdcc
 
 # Sensitive files
 **/solution/

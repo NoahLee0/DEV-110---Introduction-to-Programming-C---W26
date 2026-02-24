@@ -10,11 +10,14 @@
 - Runs a text-heavy menu app that demonstrates string formatting and output patterns.
 - */
 
+<<<<<<< HEAD
 using System.Reflection.Metadata;
 using System.Runtime.CompilerServices;
 using System.Transactions;
 using System.Xml.Linq;
 
+=======
+>>>>>>> 6152f1b5048162c84e28aa0e9aefae0dbe81bdcc
 namespace TextMenuApp;
 
 public class Program
@@ -28,6 +31,7 @@ public class Program
         // - divider: 48 equals signs (hint: use new string() constructor)
         // Display: divider, title in uppercase, subtitle, divider
 
+<<<<<<< HEAD
 
         string title = "Text Menu Studio";
         string subtitle = "String + Console Output Patterns";
@@ -35,10 +39,13 @@ public class Program
 
         Console.WriteLine($"{divider} \n{title} \n{subtitle} \n{divider} \n");
 
+=======
+>>>>>>> 6152f1b5048162c84e28aa0e9aefae0dbe81bdcc
         int choice = 0;
 
         // TODO 2: Create a menu loop that repeats until user chooses 6 (Exit)
         // Hint: Use a while loop
+<<<<<<< HEAD
         Console.ForegroundColor = ConsoleColor.DarkBlue;
 
 
@@ -154,6 +161,8 @@ public class Program
             Console.WriteLine("Closing word does not have \' \' character");
         }
         Console.WriteLine("Goodbye!");
+=======
+>>>>>>> 6152f1b5048162c84e28aa0e9aefae0dbe81bdcc
         {
             // TODO 3: Print the menu box
             // Required menu option texts (tests check for these):
@@ -245,6 +254,7 @@ public class Program
         // Keep prompting until input is valid AND within range
         // Return the valid number
 
+<<<<<<< HEAD
         bool isValid;
         int value;
         do
@@ -266,10 +276,14 @@ public class Program
         Console.WriteLine(prompt + "\n");
 
         return Console.ReadLine();
+=======
+        return min; // Remove this placeholder
+>>>>>>> 6152f1b5048162c84e28aa0e9aefae0dbe81bdcc
     }
 
     private static double ReadDouble(string prompt)
     {
+<<<<<<< HEAD
         bool isValid;
         double value;
         do
@@ -284,5 +298,13 @@ public class Program
         } while (!isValid);
 
         return value;
+=======
+        // TODO 8: Implement input validation
+        // Use a do-while loop with double.TryParse()
+        // Keep prompting until input is a valid number
+        // Return the valid number
+
+        return 0; // Remove this placeholder
+>>>>>>> 6152f1b5048162c84e28aa0e9aefae0dbe81bdcc
     }
 }
