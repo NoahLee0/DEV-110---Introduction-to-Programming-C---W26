@@ -3,7 +3,7 @@
  * Instructor: Zak Brinlee
  * Term: Winter 2026
  *
- * Programmer: YourName
+ * Programmer: Noah Lee
  * Assignment: Week 10: Habit Tracker (File I/O)
  *
  * What does this program do?:
@@ -11,7 +11,9 @@
  * view, add, update, and save your habits back to disk.
  * ******************************************************************************/
 
+using System.ComponentModel.DataAnnotations;
 using System.Globalization;
+using System.Runtime.CompilerServices;
 
 namespace HabitTracker;
 
@@ -100,7 +102,28 @@ public class Program
     // - Return the list
     private static List<Habit> LoadHabits(string path)
     {
-        throw new NotImplementedException();
+        List<Habit> habits = new List<Habit>();
+        try
+        {
+            foreach (string raw in File.ReadAllLines(path))
+            {
+                string line = raw.Trim();
+                if (line.Length == 0)
+                {
+                    continue;
+                }
+                string[] parts = line.Split(',');
+
+                habits.Add(new Habit(parts[0], parts[1].Trim().Equals("done", StringComparison.OrdinalIgnoreCase), parts[2]));
+            }
+        } catch (FileNotFoundException)
+        {
+            Console.WriteLine($"Error: File not found — {path}");
+            return habits;
+
+
+        }
+        return habits;
     }
 
     // TODO 2: Implement PrintHabits
@@ -113,7 +136,11 @@ public class Program
     // Recall: DisplayInfo() is already implemented on the Habit class.
     private static void PrintHabits(List<Habit> habits)
     {
-        throw new NotImplementedException();
+        Console.WriteLine("--- Your Habits ---");
+        foreach (Habit habit in habits)
+        {
+            habit.DisplayInfo();
+        }
     }
 
     // TODO 3: Implement PrintSummary
@@ -133,7 +160,14 @@ public class Program
     //   Weekly:   1/1 completed (100.0%)
     private static void PrintSummary(List<Habit> habits)
     {
-        throw new NotImplementedException();
+        double dailyDone = habits.Count(h => h.Frequency == "daily" && h.IsCompleted);
+        double daily = habits.Count(h => h.Frequency == "daily");
+        double weeklyDone = habits.Count(h => h.Frequency == "weekly" && h.IsCompleted);
+        double weekly = habits.Count(h => h.Frequency == "weekly");
+        Console.WriteLine("--- Summary ---");
+        Console.WriteLine($"Daily:    {dailyDone}/{daily} ({(100 * (dailyDone / daily)).ToString("F1", CultureInfo.InvariantCulture)}%)");
+        Console.WriteLine($"Weekly:    {weeklyDone}/{weekly} ({(100 * (weeklyDone / weekly)).ToString("F1", CultureInfo.InvariantCulture)}%)");
+
     }
 
     // TODO 4: Implement AddHabit
@@ -151,7 +185,26 @@ public class Program
     // - Print: Added: {name} ({frequency})
     private static void AddHabit(List<Habit> habits)
     {
-        throw new NotImplementedException();
+        Console.WriteLine("--- Add Habit ---");
+        Console.Write("Habit name: ");
+        string name = Console.ReadLine();
+
+        string frequency;
+        do
+        {
+            Console.Write("Frequency ((D)aily or (W)eekly): ");
+            frequency = Console.ReadLine().Trim().ToUpper();
+        } while (!frequency.Equals("D") && !frequency.Equals("W"));
+        if (frequency.Equals("D"))
+        {
+            frequency = "daily";
+        } else
+        {
+            frequency = "weekly";
+        }
+
+        habits.Add(new Habit(name, false, frequency));
+        Console.WriteLine($"Added: {name} ({frequency})");
     }
 
     // TODO 5: Implement UpdateHabit
@@ -171,7 +224,33 @@ public class Program
     //   Hint: (habit.IsCompleted ? "completed" : "pending")
     private static void UpdateHabit(List<Habit> habits)
     {
-        throw new NotImplementedException();
+        Console.WriteLine("--- Update Habit ---");
+        if (habits.Count == 0)
+        {
+            Console.WriteLine("No habits to update.");
+            return;
+        }
+        for (int i = 0; i < habits.Count; i ++)
+        {
+        Console.WriteLine($"{i + 1}: {habits[i].Name}");
+        }
+
+        Console.Write("Enter habit number: ");
+        int habitIndex = ReadIntInRange(1, habits.Count) - 1;
+        Console.Write($"New name (press Enter to keep \"{habits[habitIndex].Name}\"): ");
+        string name = Console.ReadLine();
+        if (!String.IsNullOrEmpty(name))
+        {
+            habits[habitIndex].Name = name;
+        }
+        if (habits[habitIndex].IsCompleted)
+        {
+            habits[habitIndex].IsCompleted = false;
+        } else
+        {
+            habits[habitIndex].IsCompleted = true;
+        }
+        Console.WriteLine($"Updated: {habits[habitIndex].Name} now {(habits[habitIndex].IsCompleted ? "completed" : "pending")}");
     }
 
     // TODO 6: Implement SaveHabits
@@ -185,7 +264,10 @@ public class Program
     // - Print: Habits saved to {path}.
     private static void SaveHabits(string path, List<Habit> habits)
     {
-        throw new NotImplementedException();
+        string[] habitArray = new string[habits.Count];
+        habitArray = habits.Select(h => $"{h.Name},{(h.IsCompleted ? "done" : "pending")},{h.Frequency}").ToArray();
+        File.WriteAllLines(path, habitArray);
+        Console.WriteLine($"Habits saved to {path}.");
     }
 
     /// <summary>
